@@ -1,0 +1,28 @@
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+
+@keyframes progressVertical {
+  0% {
+    height: 0;
+  }
+}
+@keyframes progressHorizontal {
+  0% {
+    width: 0;
+  }
+}
