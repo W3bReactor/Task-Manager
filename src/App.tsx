@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
 import { Header, Sidebar } from './components';
 import './assets/styles/main.scss';
 import 'react-lazy-load-image-component/src/effects/blur.css';
