@@ -32,6 +32,7 @@ const App = () => {
 	const isAuth = useAppSelector(selectIsAuth);
 	const dispatch = useAppDispatch();
 	const { data, isSuccess, isLoading } = authApi.useCheckAuthQuery();
+
 	useEffect(() => {
 		if (isSuccess) {
 			localStorage.setItem('token', data.accessToken);
