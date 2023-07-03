@@ -52,7 +52,7 @@ const App = () => {
 		return <Loading />;
 	}
 	return (
-		<BrowserRouter>
+		<HashRouter>
 			<Page>
 				<Header />
 				<GridWrapper>
@@ -102,7 +102,7 @@ const App = () => {
 					)}
 				</GridWrapper>
 			</Page>
-		</BrowserRouter>
+		</HashRouter>
 	);
 };
 

@@ -65,8 +65,8 @@ const AccountInfo: FC<AccountInfoProps> = ({
 				<LazyLoadImage
 					src={
 						avatar
-							? `http://localhost:7000/api/uploads/${avatar}`
-							: 'http://localhost:7000/api/uploads/user.png'
+							? `${process.env.REACT_APP_SERVER_URL}/api/uploads/${avatar}`
+							: `${process.env.REACT_APP_SERVER_URL}/api/uploads/user.png`
 					}
 					height={233}
 					width={233}

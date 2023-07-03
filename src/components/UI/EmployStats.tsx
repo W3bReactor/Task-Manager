@@ -24,8 +24,8 @@ export const EmployStats: FC<EmployStatsProps> = ({
 				<IconProfile
 					src={
 						profileIcon
-							? `http://localhost:7000/api/uploads/${profileIcon}`
-							: 'http://localhost:7000/api/uploads/user.png'
+							? `${process.env.REACT_APP_SERVER_URL}/api/uploads/${profileIcon}`
+							: `${process.env.REACT_APP_SERVER_URL}/api/uploads/user.png`
 					}
 					alt={name}
 				/>

@@ -73,8 +73,8 @@ export const ProjectCard: FC<ProjectCardProps> = ({
 							<Image
 								src={
 									worker.avatar
-										? `http://localhost:7000/api/uploads/${worker.avatar}`
-										: 'http://localhost:7000/api/uploads/user.png'
+										? `${process.env.REACT_APP_SERVER_URL}/api/uploads/${worker.avatar}`
+										: `${process.env.REACT_APP_SERVER_URL}/api/uploads/user.png`
 								}
 								alt={worker.name}
 							/>

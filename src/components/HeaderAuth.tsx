@@ -49,8 +49,8 @@ const HeaderAuth = () => {
 						effect="blur"
 						src={
 							data?.avatar
-								? `http://localhost:7000/api/uploads/${data.avatar}`
-								: 'http://localhost:7000/api/uploads/user.png'
+								? `${process.env.REACT_APP_SERVER_URL}/api/uploads/${data.avatar}`
+								: `${process.env.REACT_APP_SERVER_URL}/api/uploads/user.png`
 						}
 						height={48}
 						width={48}
