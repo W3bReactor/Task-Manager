@@ -42,7 +42,7 @@ const ProjectParams: FC<ProjectParamsProps> = ({
 				<Button
 					onClick={() =>
 						navigator.clipboard.writeText(
-							`http://localhost:3000/project/${projectId}`
+							`https://web-tasks.netlify.app/#/project/${projectId}`
 						)
 					}
 				>

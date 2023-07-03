@@ -54,7 +54,7 @@ const ProfileShortInfo: FC<ProfileShortInfoProps> = ({
 					width={98}
 					src={
 						avatar
-							? `${process.env.REACT_APP_SERVER_URL}/api/uploads${avatar}`
+							? `${process.env.REACT_APP_SERVER_URL}/api/uploads/${avatar}`
 							: `${process.env.REACT_APP_SERVER_URL}/api/uploads/user.png`
 					}
 					alt={`${name} ${surname}`}

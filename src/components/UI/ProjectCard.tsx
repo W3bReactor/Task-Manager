@@ -56,7 +56,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
 					<Button
 						onClick={() =>
 							navigator.clipboard.writeText(
-								`http://localhost:3000/project/${id}`
+								`https://web-tasks.netlify.app/#/project/${id}`
 							)
 						}
 					>
