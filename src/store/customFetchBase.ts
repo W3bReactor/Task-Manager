@@ -5,13 +5,14 @@ import {
 	FetchBaseQueryError,
 } from '@reduxjs/toolkit/dist/query/react';
 import { Mutex } from 'async-mutex';
+import { userApi } from './services/UserService';
 import { setIsAuth, setUser } from './auth';
 import { AuthResponse } from '../models/response/UserResponse';
 
 const mutex = new Mutex();
 
 export const baseQuery = fetchBaseQuery({
-	baseUrl: `${process.env.REACT_APP_SERVER_URL}`,
+	baseUrl: `${process.env.REACT_APP_SERVER_URL}/api`,
 	prepareHeaders: (headers) => {
 		headers.set('Authorization', `Bearer ${localStorage.getItem('token')}`);
 		return headers;
