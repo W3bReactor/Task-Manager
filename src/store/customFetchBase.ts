@@ -15,6 +15,7 @@ export const baseQuery = fetchBaseQuery({
 	baseUrl: `${process.env.REACT_APP_SERVER_URL}/api`,
 	prepareHeaders: (headers) => {
 		headers.set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+
 		return headers;
 	},
 	credentials: 'include',

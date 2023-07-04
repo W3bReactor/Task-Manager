@@ -27,8 +27,8 @@ import TaskPage from './pages/TaskPage';
 import UpdateTaskPage from './pages/UpdateTaskPage';
 import { socket } from './socket';
 import SearchPage from './pages/SearchPage';
-import SettingsPage from "./pages/SettingsPage";
-import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import SettingsPage from './pages/SettingsPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 
 const App = () => {
 	const isAuth = useAppSelector(selectIsAuth);
@@ -54,7 +54,7 @@ const App = () => {
 		return <Loading />;
 	}
 	return (
-		<HashRouter>
+		<BrowserRouter>
 			<Page>
 				<Header />
 				<GridWrapper>
@@ -108,7 +108,7 @@ const App = () => {
 					)}
 				</GridWrapper>
 			</Page>
-		</HashRouter>
+		</BrowserRouter>
 	);
 };
 
