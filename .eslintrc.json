@@ -23,13 +23,7 @@
 
         "indent": 0,
         "linebreak-style": 0,
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ]
+        "quotes": 0,
+        "semi": 0
     }
 }
