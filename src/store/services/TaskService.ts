@@ -72,6 +72,19 @@ export const taskApi = createApi({
 			}),
 			providesTags: (result) => ['Task'],
 		}),
+		leave: builder.mutation<TaskResponse[], string>({
+			query: (taskId) => ({
+				url: `project/task/leave`,
+				method: 'PUT',
+				body: {
+					_id: taskId,
+				}
+			}),
+			invalidatesTags: ['Task'],
+			async onQueryStarted(__, { dispatch }) {
+				dispatch(projectApi.util.invalidateTags(['Project']));
+			},
+		}),
 		getAdminTasks: builder.query<TaskResponse[], string>({
 			query: (projectId) => ({
 				url: `/admin/project/${projectId}/task`,

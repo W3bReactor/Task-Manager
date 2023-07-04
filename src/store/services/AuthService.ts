@@ -38,6 +38,12 @@ export const authApi = createApi({
 				method: 'GET',
 			}),
 		}),
+		delete: builder.mutation<AuthResponse, void>({
+			query: () => ({
+				url: 'delete',
+				method: 'DELETE',
+			}),
+		}),
 	}),
 });
 

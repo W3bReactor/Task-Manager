@@ -5,7 +5,7 @@ import { Field, useField } from 'formik';
 
 interface FormInput {
 	bordercolor?: Colors;
-	placeholder: string;
+	placeholder?: string;
 	type?: string;
 	name: string;
 	value?: string;

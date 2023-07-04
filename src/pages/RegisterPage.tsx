@@ -5,13 +5,18 @@ import { Colors } from '../styles';
 
 const RegisterPage = () => {
 	return (
-		<>
+		<Wrapper>
 			<Title>Welcome!</Title>
 			<SubTitle>Please register to use the app</SubTitle>
 			<Register />
-		</>
+		</Wrapper>
 	);
 };
+
+const Wrapper = styled.div`
+	overflow: auto;
+`
+
 const Title = styled.h2`
 	font-weight: 400;
 	font-size: 48px;

@@ -7,6 +7,7 @@ export const registerValidate = (values: FormikValues) => {
 		name?: string;
 		surname?: string;
 		post?: string;
+		privacy?: string
 	} = {};
 
 	if (!values.email) {
@@ -14,7 +15,9 @@ export const registerValidate = (values: FormikValues) => {
 	} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
 		errors.email = 'Invalid email address';
 	}
-
+	if (!values.privacy) {
+		errors.privacy = 'Required';
+	}
 	if (!values.password) {
 		errors.password = 'Required';
 	} else if (values.password.length <= 8) {
@@ -142,6 +145,26 @@ export const predictionValidate = (values: FormikValues) => {
 		errors.prediction = 'Prediction must be a number';
 	} else if (values.prediction < 0) {
 		errors.prediction = 'Prediction cannot be negative';
+	}
+
+	return errors;
+};
+
+export const settingsValidate = (values: FormikValues) => {
+	const errors: {
+		from_email?: string;
+		html_message?: string;
+	} = {};
+	if (!values.from_email) {
+		errors.from_email = 'Required';
+	} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.from_email)) {
+		errors.from_email = 'Invalid email address';
+	}
+
+	if (!values.html_message) {
+		errors.html_message = 'Required';
+	} else if (values.html_message.length > 255) {
+		errors.html_message = 'Description cannot exceed 255 characters';
 	}
 
 	return errors;

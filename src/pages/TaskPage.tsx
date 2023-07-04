@@ -19,6 +19,7 @@ const TaskPage = () => {
 	const { projectId, taskId } = useParams();
 	const ref = useRef(false);
 	const [deleteTask] = taskApi.useDeleteTaskMutation();
+	const [leaveTask] = taskApi.useLeaveMutation();
 	const { data, isLoading } = taskApi.useGetTaskQuery({
 		projectId: projectId || '',
 		taskId: taskId || '',
@@ -71,7 +72,6 @@ const TaskPage = () => {
 			}
 		};
 	}, [data]);
-
 	const { id } = useAppSelector(selectAuthUser);
 	const navigate = useNavigate();
 	const isAdmin = data && data.admins.some((admin) => admin._id === id);
@@ -82,6 +82,12 @@ const TaskPage = () => {
 		});
 		navigate('/task/');
 	};
+	const onLeaveTask = () => {
+		leaveTask(taskId || '');
+		navigate('/task/');
+	};
+	const isLeave = isAdmin && data.admins.length > 1 || isWorker && !isAdmin
+
 	if (isLoading) {
 		return <Loading />;
 	}
@@ -124,6 +130,7 @@ const TaskPage = () => {
 								admins={data.admins}
 								workers={data.workers}
 							/>
+
 							{isAdmin && (
 								<ButtonWrapper>
 									<SimpleButton
@@ -143,6 +150,15 @@ const TaskPage = () => {
 									</SimpleButton>
 								</ButtonWrapper>
 							)}
+							{isLeave  &&
+								<SimpleButton
+									onClick={onLeaveTask}
+									styles={LeaveStyles}
+									type={'button'}
+								>
+									Leave
+								</SimpleButton>
+							}
 						</RightItem>
 					</Section>
 				</>
@@ -156,7 +172,7 @@ const TaskPage = () => {
 const SimpleButtonStyles = css`
 	color: ${Colors.RED};
 	transition: all 0.3s linear;
-
+	max-width: max-content;
 	:hover {
 		background-color: ${Colors.LIGHT_GRAY};
 	}
@@ -170,11 +186,24 @@ const SimpleLinkStyles = css`
 		background-color: ${Colors.LIGHT_GRAY};
 	}
 `;
+const LeaveStyles = css`
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 20px;
+	color: ${Colors.RED};
+	transition: all 0.3s linear;
+	max-width: max-content;
+	:hover {
+		background-color: ${Colors.LIGHT_GRAY};
+	}
+`
+
 const ButtonWrapper = styled.div`
 	display: flex;
 	align-items: flex-end;
-	justify-content: flex-end;
+	justify-content: space-between;
 	margin-top: auto;
+	flex-wrap: wrap;
 `;
 
 const Section = styled.section`

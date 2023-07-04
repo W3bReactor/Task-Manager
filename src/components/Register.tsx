@@ -5,7 +5,7 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import FormInput from './UI/FormInput';
 import { Colors } from '../styles';
 import { registerValidate } from '../helpers/validation';
-import { Link, useNavigate } from 'react-router-dom';
+import {Link, Navigate, useNavigate} from 'react-router-dom';
 import { useAppDispatch } from '../hooks/useAppDispatch';
 import { setIsAuth } from '../store/auth';
 import { authApi } from '../store/services/AuthService';
@@ -28,6 +28,7 @@ const Register = () => {
 				name: '',
 				surname: '',
 				post: '',
+				privacy: false
 			}}
 			validate={(values) => registerValidate(values)}
 			onSubmit={async (values, { setSubmitting }) => {
@@ -129,6 +130,15 @@ const Register = () => {
 								: Colors.BLACK
 						}
 					/>
+					<Error name="privacy" component="div" />
+					<Privacy>
+						<Field
+							type="checkbox"
+							name="privacy"
+							id="privacy"
+						/>
+						<PrivacyText htmlFor="privacy">I agree to the <Link to={'/privacy'}>terms and conditions</Link></PrivacyText>
+					</Privacy>
 					<Items>
 						<SimpleButton
 							type={'submit'}
@@ -155,6 +165,16 @@ const Select = styled(Field)<{ bordercolor?: Colors }>`
 	line-height: 19px;
 	margin-bottom: 25px;
 `;
+
+const PrivacyText = styled.label`
+	margin-left: 15px;
+`
+
+const Privacy = styled.div`
+	display: flex;
+	align-items: center;
+	margin-bottom: 25px;
+`
 
 const Option = styled.option`
 	width: 100%;

@@ -27,6 +27,8 @@ import TaskPage from './pages/TaskPage';
 import UpdateTaskPage from './pages/UpdateTaskPage';
 import { socket } from './socket';
 import SearchPage from './pages/SearchPage';
+import SettingsPage from "./pages/SettingsPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 
 const App = () => {
 	const isAuth = useAppSelector(selectIsAuth);
@@ -61,8 +63,11 @@ const App = () => {
 							<Sidebar />
 							<Main auth={isAuth}>
 								<Routes>
+									<Route path="/privacy" element={<PrivacyPolicyPage />} />
+
 									<Route path="/dashboard" element={<StatsPage />} />
 									<Route path="/projects" element={<ProjectsPage />} />
+									<Route path="/settings" element={<SettingsPage />} />
 									<Route path="/task" element={<TasksPage />} />
 									<Route path="/account/:id" element={<AccountPage />} />
 									<Route path="/verify" element={<VerifyPage />} />
@@ -93,6 +98,7 @@ const App = () => {
 						<Main auth={isAuth}>
 							<Section>
 								<Routes>
+									<Route path="/privacy" element={<PrivacyPolicyPage />} />
 									<Route path="/register" element={<RegisterPage />} />
 									<Route path="/login" element={<LoginPage />} />
 									<Route path="/*" element={<RegisterPage />} />

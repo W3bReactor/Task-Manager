@@ -17,6 +17,8 @@ import MenuList from './UI/MenuList';
 const HeaderMenu = () => {
 	const dispatch = useAppDispatch();
 	const [logout] = authApi.useLogoutMutation();
+	const [deleteAccount] = authApi.useDeleteMutation();
+
 	const [menuOpen, setMenuOpen] = useState(false);
 	const navigate = useNavigate();
 	const Logout = async () => {
@@ -27,6 +29,15 @@ const HeaderMenu = () => {
 		setMenuOpen(false);
 		dispatch(projectApi.util.resetApiState());
 	};
+	const Delete = async () => {
+		await deleteAccount();
+		localStorage.removeItem('token');
+		dispatch(setIsAuth(false));
+		navigate('/register');
+		setMenuOpen(false);
+		dispatch(projectApi.util.resetApiState());
+
+	}
 	const { id } = useAppSelector(selectAuthUser);
 	const { data, isLoading } = userApi.useGetUserQuery(String(id));
 
@@ -63,6 +74,11 @@ const HeaderMenu = () => {
 					<MenuItem>
 						<MenuButton onClick={() => Logout()} textColor={Colors.RED}>
 							Logout
+						</MenuButton>
+					</MenuItem>
+					<MenuItem>
+						<MenuButton onClick={() => Delete()} textColor={Colors.RED}>
+							Delete
 						</MenuButton>
 					</MenuItem>
 				</MenuList>
